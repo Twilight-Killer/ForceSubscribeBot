@@ -40,12 +40,12 @@ async def main(bot: Client, msg: Message):
                     await msg.chat.kick_member(user_id)
                     await msg.reply("Banned member because not joined Force Subscribe Chat")
                     return
-                buttons = [[InlineKeyboardButton("✨ Join This Chat ✨", url=link)]]
+                buttons = [[InlineKeyboardButton("👉 Gabung Disini 👈", url=link)]]
                 if action == 'mute':
                     await msg.chat.restrict_member(user_id, ChatPermissions(can_send_messages=False))
-                    buttons.append([InlineKeyboardButton("Unmute Me", callback_data=f"joined+{msg.from_user.id}")])
+                    buttons.append([InlineKeyboardButton("👉 Unmute Saya 👈", callback_data=f"joined+{msg.from_user.id}")])
                 await msg.reply(
-                    f"You must join {mention} to chat here.",
+                    f"Kamu harus gabung channel {mention} untuk bisa chat disini, Sesudah Gabung klik tombol 👉 Unmute Saya 👈",
                     disable_web_page_preview=True,
                     reply_markup=InlineKeyboardMarkup(buttons),
                 )
