@@ -125,14 +125,14 @@ async def _callbacks(bot: Client, callback_query: CallbackQuery):
             await callback_query.answer("I've been demoted from the force subscribe chat.", show_alert=True)
             await bot.send_message(chat_id, "I've been demoted from the force subscribe chat. Of no use then!")
             return
-        not_joined = f"Join {mention} first then try!"
+        not_joined = f"Gabung dulu channel {mention} baru bisa chat di grup!"
         try:
             if user_id == muted_user_id:
                 await bot.get_chat_member(force_chat, user_id)
                 await bot.unban_chat_member(chat_id, user_id)
-                await callback_query.answer("Good Kid. You can start chatting properly in group now.", show_alert=True)
+                await callback_query.answer("Bagus, sekarang kamu sudah bisa chat di dalam grup.", show_alert=True)
                 await callback_query.message.delete()
             else:
-                await callback_query.answer('This message is not for you!', show_alert=True)
+                await callback_query.answer('Pesan ini bukan untuk kamu!', show_alert=True)
         except UserNotParticipant:
             await callback_query.answer(not_joined, show_alert=True)
